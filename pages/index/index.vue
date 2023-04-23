@@ -5,7 +5,7 @@
 				:style="{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(255,255,255,1) 100%),  url(${movie.bgImage})` }">
 			</view>
 			<view class="header_bar">
-				<uni-icons type="bars" style="position: absolute;left: 20rpx;top: 30rpx;width: 20%;"
+				<uni-icons type="bars" style="position: absolute;left: 20rpx;top: 30rpx;width: 20%" color="white"
 					size="30"></uni-icons>
 				<uni-search-bar bgColor="#EEEEEE" radius="100" @focus="focusSearch" cancelButton="none"
 					style="width: 80%;position: absolute;left: 90rpx;"></uni-search-bar>
@@ -47,7 +47,7 @@
 			<view class="top250">
 				<CenterTitle titleName='Top250'></CenterTitle>
 				<view class="top_body">
-					<scroll-view class="scroll-view_H" scroll-x="true" scroll-left="0">
+					<scroll-view class="scroll-view_H" scroll-x="true" scroll-left="0" show-scrollBar="true">
 						<view class="scroll-view-item_H" v-for="row,index in 4" :key="index">
 							<view class="top_title">
 								<text class="top_title_index">排名</text>
@@ -139,6 +139,7 @@
 				},
 				date: {
 					today: moment().format('YYYYMMDD')
+
 				}
 			}
 		},
@@ -238,6 +239,7 @@
 				position: absolute;
 				width: 100%;
 				height: 100%;
+
 				background-repeat: no-repeat;
 				transition: background-image 0.3s linear 0s;
 

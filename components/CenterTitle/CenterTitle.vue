@@ -24,7 +24,7 @@
 		.titleContent {
 			float: left;
 			font-size: 40rpx;
-			font-weight: 400;
+			font-weight: 600;
 
 		}
 
