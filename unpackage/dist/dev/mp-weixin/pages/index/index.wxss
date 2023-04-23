@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.container.data-v-57280228 {
+  position: relative;
+  font-size: 14px;
+  line-height: 24px;
+}
+.container .header.data-v-57280228 {
+  position: relative;
+}
+.container .header .background.data-v-57280228 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  transition: background-image 0.3s linear 0s;
+  -webkit-filter: blur(30px);
+          filter: blur(30px);
+}
+.container .header .header_bar.data-v-57280228 {
+  height: 56px;
+}
+.container .header .scroll_list.data-v-57280228 {
+  height: 80rpx;
+  margin: 20rpx 0;
+}
+.container .header .scroll_list .scroll-view_H.data-v-57280228 {
+  white-space: nowrap;
+  width: 100%;
+}
+.container .header .scroll_list .scroll-view_H .scroll-view-item_H.data-v-57280228 {
+  display: inline-block;
+  width: 120rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: white;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-left: 25rpx;
+}
+.container .header .scroll_list .scroll-view_H .active.data-v-57280228 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+.container .header .swiper swiper-item.data-v-57280228 {
+  text-align: center;
+  height: 100%;
+}
+.container .header .swiper swiper-item .swiper-item.data-v-57280228 {
+  border-radius: 16px;
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0 10rpx;
+  overflow: hidden;
+}
+.container .header .swiper swiper-item .swiper-item ._img.data-v-57280228 {
+  width: 100%;
+  height: 100%;
+}
+.container .center.data-v-57280228 {
+  padding: 0 30rpx;
+}
+.container .center .showing.data-v-57280228 {
+  margin-top: 20rpx;
+}
+.container .center .showing .show_body .scroll-view_H.data-v-57280228 {
+  white-space: nowrap;
+  width: 100%;
+  height: 350rpx;
+}
+.container .center .showing .show_body .scroll-view_H .scroll-view-item_H.data-v-57280228 {
+  display: inline-block;
+  margin-right: 20rpx;
+  width: 100%;
+  height: 100%;
+  border-radius: 40rpx;
+  overflow: hidden;
+}
+.container .center .showing .show_body .scroll-view_H .scroll-view-item_H ._img.data-v-57280228 {
+  width: 100%;
+  height: 100%;
+}
+.container .center .hot.data-v-57280228 {
+  margin-top: 40rpx;
+}
+.container .center .hot .hotDate.data-v-57280228 {
+  display: inline-block;
+  margin-left: 35rpx;
+}
+.container .center .hot .hotDate button.data-v-57280228 {
+  margin-top: 25rpx;
+  margin-right: 10rpx;
+  background-color: white;
+  float: left;
+  font-size: 25rpx;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.container .center .hot .hotDate button.data-v-57280228::after {
+  border: none;
+}
+.container .center .movieCategory .selectCtegory.data-v-57280228 {
+  margin-top: 25rpx;
+  margin-left: 50rpx;
+  float: left;
+  width: 40%;
+}
+.container .center .movieCategory .selectCtegory .el-input__inner.data-v-57280228 {
+  background-color: aqua;
+}
+.container .center .top250 .top_body .scroll-view_H.data-v-57280228 {
+  white-space: nowrap;
+  width: 100%;
+  height: 850rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H.data-v-57280228 {
+  display: inline-block;
+  margin-right: 20rpx;
+  width: 90%;
+  height: 100%;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H .top_title.data-v-57280228 {
+  overflow: hidden;
+  height: 40rpx;
+  width: 100%;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H .top_title .top_title_index.data-v-57280228 {
+  float: left;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H .top_title .top_title_rank.data-v-57280228 {
+  float: right;
+  margin-right: 30rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H .top_title text.data-v-57280228 {
+  font-weight: 600;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul.data-v-57280228 {
+  height: 100%;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li.data-v-57280228 {
+  list-style: none;
+  height: 160rpx;
+  padding-right: 30rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_index.data-v-57280228,
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_img.data-v-57280228,
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info.data-v-57280228 {
+  float: left;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_index.data-v-57280228,
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_img.data-v-57280228,
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_rank.data-v-57280228 {
+  line-height: 160rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_index.data-v-57280228 {
+  font-size: 35rpx;
+  text-align: center;
+  width: 10%;
+  color: #646d75;
+  margin-right: 8rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_img.data-v-57280228 {
+  height: 100rpx;
+  width: 17%;
+  background-color: aquamarine;
+  margin-top: 15px;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1);
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_img ._img.data-v-57280228 {
+  max-width: 100%;
+  max-height: 100%;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info.data-v-57280228 {
+  height: 100rpx;
+  width: 50%;
+  margin-top: 18px;
+  margin-left: 5%;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info .top_info_title.data-v-57280228 {
+  width: 100%;
+  font-size: 30rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info .top_info_detail.data-v-57280228 {
+  width: 100%;
+  color: #646d75;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info .top_info_title.data-v-57280228,
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_info .top_info_detail.data-v-57280228 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.container .center .top250 .top_body .scroll-view_H .scroll-view-item_H ._ul ._li .top_rank.data-v-57280228 {
+  width: 10%;
+  float: right;
+  text-align: center;
+}
+

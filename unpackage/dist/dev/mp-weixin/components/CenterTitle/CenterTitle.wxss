@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* 水平间距 */
+/* 水平间距 */
+.title {
+  height: 100rpx;
+  line-height: 120rpx;
+  border-bottom: 1px solid #e3e3e3;
+  margin-top: 40rpx;
+}
+.title .titleContent {
+  float: left;
+  font-size: 40rpx;
+  font-weight: 400;
+}
+.title .checkAll {
+  float: right;
+  background-color: #ffffff;
+  font-size: 25rpx;
+  font-weight: 600;
+  margin-top: 25rpx;
+}
+

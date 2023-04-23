@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+    "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
+    "center-title": "/components/CenterTitle/CenterTitle",
+    "center-card": "/components/CenterCard/CenterCard",
+    "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
+  }
+}

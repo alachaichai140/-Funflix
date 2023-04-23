@@ -1,0 +1,1 @@
+<view class="title"><text class="titleContent">{{titleName}}</text><slot name="hotDate"></slot><slot name="selectCtegory"></slot><button class="checkAll" type="default">查看全部</button></view>
