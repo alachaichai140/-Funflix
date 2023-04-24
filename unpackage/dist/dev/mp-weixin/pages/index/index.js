@@ -177,6 +177,7 @@ var render = function () {
     }
   })
   var g0 = _vm.movie.hotMovieList.slice(0, 5)
+  var g1 = _vm.movie.weeklyBestMovieList.slice(0, 5)
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -185,6 +186,7 @@ var render = function () {
         l1: l1,
         l3: l3,
         g0: g0,
+        g1: g1,
       },
     }
   )
@@ -366,7 +368,8 @@ var _default = {
         }],
         top250MovieList: [],
         todayShowingMovieList: [],
-        hotMovieList: []
+        hotMovieList: [],
+        weeklyBestMovieList: []
       },
       scrollTop: 0,
       old: {
@@ -450,10 +453,11 @@ var _default = {
       });
     },
     getWeeklyBestMovie: function getWeeklyBestMovie() {
+      var _this4 = this;
       uni.request({
         url: 'https://rank.8610000.xyz/weekly_best/movie/1.json',
         success: function success(res) {
-          console.log(res.data);
+          _this4.movie.weeklyBestMovieList = res.data.subject_collection_items;
         },
         fail: function fail(err) {
           console.log(err);
@@ -476,6 +480,7 @@ var _default = {
     this.getTopMovie();
     this.getTodayShowing();
     this.getHotMovie(this.date.today);
+    this.getWeeklyBestMovie();
   }
 };
 exports.default = _default;

@@ -84,11 +84,11 @@
 							@click="handleDate(3)">月</button>
 					</view>
 				</CenterTitle>
-				<CenterCard :hotMovieList="movie.hotMovieList.slice(0,5)"></CenterCard>
+				<CenterCard :movieDataList="movie.hotMovieList.slice(0,5)"></CenterCard>
 			</view>
 			<view class="weekly_best">
 				<CenterTitle titleName='一周口碑'></CenterTitle>
-				<CenterCard></CenterCard>
+				<CenterCard :movieDataList="movie.weeklyBestMovieList.slice(0,5)"></CenterCard>
 			</view>
 			<view class="movieCategory">
 				<CenterTitle titleName='分类电影'>
@@ -144,7 +144,8 @@
 					],
 					top250MovieList: [],
 					todayShowingMovieList: [],
-					hotMovieList: []
+					hotMovieList: [],
+					weeklyBestMovieList: []
 				},
 				scrollTop: 0,
 				old: {
@@ -230,7 +231,7 @@
 				uni.request({
 					url: 'https://rank.8610000.xyz/weekly_best/movie/1.json',
 					success: res => {
-						console.log(res.data);
+						this.movie.weeklyBestMovieList = res.data.subject_collection_items
 					},
 					fail: err => {
 						console.log(err);
@@ -253,6 +254,7 @@
 			this.getTopMovie()
 			this.getTodayShowing()
 			this.getHotMovie(this.date.today)
+			this.getWeeklyBestMovie()
 		}
 
 	}

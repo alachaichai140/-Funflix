@@ -1,9 +1,9 @@
 <template>
 	<view class="hot_body">
 		<scroll-view class="scroll-view_H" scroll-x="true" scroll-left="0">
-			<view v-for="item,index in hotMovieList" :key="item.id" id="item.id" class="scroll-view-item_H ">
+			<view v-for="item,index in movieDataList" :key="item.id" id="item.id" class="scroll-view-item_H ">
 				<view class="card_pic">
-					<img :src="item.cover.url" alt="">
+					<img :src="item.cover.url?item.cover.url:item.cover_url" alt="">
 				</view>
 				<view class="card__info">
 					<view class="card_info_title">{{item.title}}{{item.original_title?'/'+item.original_title:''}}
@@ -26,7 +26,7 @@
 <script>
 	export default {
 		props: {
-			hotMovieList: {
+			movieDataList: {
 				type: Array,
 				default: []
 			},
@@ -79,7 +79,7 @@
 					backdrop-filter: blur(3px);
 					border-radius: 0rpx 0rpx 30rpx 30rpx;
 					box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
-
+					text-shadow: 1px 1px 2px #666;
 
 					.card_info_title {
 						margin: 5rpx 10rpx 5rpx 10rpx;
@@ -87,6 +87,7 @@
 						text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 						overflow: hidden;
 						text-overflow: ellipsis;
+						text-shadow: 1px 1px 2px #666;
 					}
 
 					.card_info_rank {
