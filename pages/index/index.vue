@@ -76,12 +76,15 @@
 			<view class="hot">
 				<CenterTitle titleName='热门电影'>
 					<view slot="hotDate" class="hotDate">
-						<button>今日</button>
-						<button>昨日</button>
-						<button>一周</button>
+						<button :class="{'active':dateHandler.dayHandler==true}" :disabled="dateHandler.dayHandler"
+							@click="handleDate(1)">日</button>
+						<button :class="{'active':dateHandler.weeksHandler==true}" :disabled="dateHandler.weeksHandler"
+							@click="handleDate(2)">周</button>
+						<button :class="{'active':dateHandler.monthHandler==true}" :disabled="dateHandler.monthHandler"
+							@click="handleDate(3)">月</button>
 					</view>
 				</CenterTitle>
-				<CenterCard></CenterCard>
+				<CenterCard :hotMovieList="movie.hotMovieList.slice(0,5)"></CenterCard>
 			</view>
 			<view class="weekly_best">
 				<CenterTitle titleName='一周口碑'></CenterTitle>
@@ -106,13 +109,22 @@
 		test
 	} from '../../api/index.js'
 	import moment from 'moment';
+	import {
+		months
+	} from 'moment';
 	export default {
 		data() {
 			return {
+				dateHandler: {
+					dayHandler: true,
+					weeksHandler: false,
+					monthHandler: false
+				},
 				movie: {
 					page: 1,
 					selectTypeValue: 0,
 					currentSwiperItem: 0,
+
 					bgImage: '',
 					type: [{
 							value: 0,
@@ -131,15 +143,17 @@
 						},
 					],
 					top250MovieList: [],
-					todayShowingMovieList: []
+					todayShowingMovieList: [],
+					hotMovieList: []
 				},
 				scrollTop: 0,
 				old: {
 					scrollTop: 0
 				},
 				date: {
-					today: moment().format('YYYYMMDD')
-
+					today: moment().format('YYYYMMDD'),
+					weeks: moment().subtract(7, 'days').format('YYYYMMDD'),
+					month: moment().subtract(1, 'month').format('YYYYMMDD')
 				}
 			}
 		},
@@ -150,6 +164,25 @@
 			currentChange(event) {
 				this.movie.currentSwiperItem = event.detail.current
 				this.movie.bgImage = this.movie.todayShowingMovieList[this.movie.currentSwiperItem].cover.url
+			},
+			handleDate(type) {
+				for (let i in this.dateHandler) {
+					this.dateHandler[i] = false
+				}
+				switch (type) {
+					case 1:
+						this.dateHandler.dayHandler = true
+						this.getHotMovie(this.date.today)
+						break;
+					case 2:
+						this.dateHandler.weeksHandler = true
+						this.getHotMovie(this.date.weeks)
+						break;
+					case 3:
+						this.dateHandler.monthHandler = true
+						this.getHotMovie(this.date.month)
+						break;
+				}
 			},
 			getToday() {
 				let td = moment();
@@ -182,11 +215,11 @@
 					}
 				})
 			},
-			getHotMovie() {
+			getHotMovie(date) {
 				uni.request({
 					url: `https://rank.8610000.xyz/hot/${date}/movie_hot_gaia.json`,
 					success: res => {
-						console.log(res.data);
+						this.movie.hotMovieList = res.data
 					},
 					fail: err => {
 						console.log(err);
@@ -219,8 +252,7 @@
 		mounted() {
 			this.getTopMovie()
 			this.getTodayShowing()
-
-
+			this.getHotMovie(this.date.today)
 		}
 
 	}
@@ -337,20 +369,32 @@
 
 				.hotDate {
 					display: inline-block;
-					margin-left: 35rpx;
+					margin-left: 65rpx;
 
 					button {
-						margin-top: 25rpx;
+						margin-top: 24rpx;
 						margin-right: 10rpx;
-						background-color: white;
+						// background-color: white;
 						float: left;
 						font-size: 25rpx;
 						font-weight: 500;
-						box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+						ackground: linear-gradient(45deg, #f7f7f7 0%, #f2f2f2 25%, #e9e9e9 50%, #e3e3e3 75%, #dbdbdb 100%);
+						color: #444;
+						border: none;
+						border-radius: 5px;
+						box-shadow: 0 3px 0 #ccc;
+						transition: all 0.2s ease;
 					}
 
 					button::after {
 						border: none;
+					}
+
+					.active {
+						box-shadow: none;
+						transform: translateY(3px);
+						background: linear-gradient(45deg, #e3e3e3 0%, #dbdbdb 25%, #d3d3d3 50%, #ccc 75%, #c4c4c4 100%);
+
 					}
 				}
 

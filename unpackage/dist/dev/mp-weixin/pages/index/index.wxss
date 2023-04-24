@@ -88,19 +88,29 @@
 }
 .container .center .hot .hotDate.data-v-57280228 {
   display: inline-block;
-  margin-left: 35rpx;
+  margin-left: 65rpx;
 }
 .container .center .hot .hotDate button.data-v-57280228 {
-  margin-top: 25rpx;
+  margin-top: 24rpx;
   margin-right: 10rpx;
-  background-color: white;
   float: left;
   font-size: 25rpx;
   font-weight: 500;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  ackground: linear-gradient(45deg, #f7f7f7 0%, #f2f2f2 25%, #e9e9e9 50%, #e3e3e3 75%, #dbdbdb 100%);
+  color: #444;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 3px 0 #ccc;
+  transition: all 0.2s ease;
 }
 .container .center .hot .hotDate button.data-v-57280228::after {
   border: none;
+}
+.container .center .hot .hotDate .active.data-v-57280228 {
+  box-shadow: none;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  background: linear-gradient(45deg, #e3e3e3 0%, #dbdbdb 25%, #d3d3d3 50%, #ccc 75%, #c4c4c4 100%);
 }
 .container .center .movieCategory .selectCtegory.data-v-57280228 {
   margin-top: 25rpx;

@@ -176,6 +176,7 @@ var render = function () {
       l2: l2,
     }
   })
+  var g0 = _vm.movie.hotMovieList.slice(0, 5)
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -183,6 +184,7 @@ var render = function () {
         l0: l0,
         l1: l1,
         l3: l3,
+        g0: g0,
       },
     }
   )
@@ -221,13 +223,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 var _index = __webpack_require__(/*! ../../api/index.js */ 33);
-var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 89));
+var _moment = _interopRequireWildcard(__webpack_require__(/*! moment */ 89));
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+//
+//
+//
 //
 //
 //
@@ -334,6 +341,11 @@ var _moment = _interopRequireDefault(__webpack_require__(/*! moment */ 89));
 var _default = {
   data: function data() {
     return {
+      dateHandler: {
+        dayHandler: true,
+        weeksHandler: false,
+        monthHandler: false
+      },
       movie: {
         page: 1,
         selectTypeValue: 0,
@@ -353,14 +365,17 @@ var _default = {
           text: "爱情"
         }],
         top250MovieList: [],
-        todayShowingMovieList: []
+        todayShowingMovieList: [],
+        hotMovieList: []
       },
       scrollTop: 0,
       old: {
         scrollTop: 0
       },
       date: {
-        today: (0, _moment.default)().format('YYYYMMDD')
+        today: (0, _moment.default)().format('YYYYMMDD'),
+        weeks: (0, _moment.default)().subtract(7, 'days').format('YYYYMMDD'),
+        month: (0, _moment.default)().subtract(1, 'month').format('YYYYMMDD')
       }
     };
   },
@@ -369,6 +384,25 @@ var _default = {
     currentChange: function currentChange(event) {
       this.movie.currentSwiperItem = event.detail.current;
       this.movie.bgImage = this.movie.todayShowingMovieList[this.movie.currentSwiperItem].cover.url;
+    },
+    handleDate: function handleDate(type) {
+      for (var i in this.dateHandler) {
+        this.dateHandler[i] = false;
+      }
+      switch (type) {
+        case 1:
+          this.dateHandler.dayHandler = true;
+          this.getHotMovie(this.date.today);
+          break;
+        case 2:
+          this.dateHandler.weeksHandler = true;
+          this.getHotMovie(this.date.weeks);
+          break;
+        case 3:
+          this.dateHandler.monthHandler = true;
+          this.getHotMovie(this.date.month);
+          break;
+      }
     },
     getToday: function getToday() {
       var td = (0, _moment.default)();
@@ -403,11 +437,12 @@ var _default = {
         }
       });
     },
-    getHotMovie: function getHotMovie() {
+    getHotMovie: function getHotMovie(date) {
+      var _this3 = this;
       uni.request({
         url: "https://rank.8610000.xyz/hot/".concat(date, "/movie_hot_gaia.json"),
         success: function success(res) {
-          console.log(res.data);
+          _this3.movie.hotMovieList = res.data;
         },
         fail: function fail(err) {
           console.log(err);
@@ -440,6 +475,7 @@ var _default = {
   mounted: function mounted() {
     this.getTopMovie();
     this.getTodayShowing();
+    this.getHotMovie(this.date.today);
   }
 };
 exports.default = _default;
