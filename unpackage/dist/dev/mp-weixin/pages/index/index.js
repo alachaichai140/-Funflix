@@ -130,19 +130,25 @@ var components
 try {
   components = {
     uniIcons: function () {
-      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 229))
+      return Promise.all(/*! import() | uni_modules/uni-icons/components/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-icons/components/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-icons/components/uni-icons/uni-icons.vue */ 235))
     },
     uniSearchBar: function () {
-      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 237))
+      return Promise.all(/*! import() | uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar.vue */ 243))
     },
     CenterTitle: function () {
-      return __webpack_require__.e(/*! import() | components/CenterTitle/CenterTitle */ "components/CenterTitle/CenterTitle").then(__webpack_require__.bind(null, /*! @/components/CenterTitle/CenterTitle.vue */ 248))
+      return __webpack_require__.e(/*! import() | components/CenterTitle/CenterTitle */ "components/CenterTitle/CenterTitle").then(__webpack_require__.bind(null, /*! @/components/CenterTitle/CenterTitle.vue */ 254))
+    },
+    uniRate: function () {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-rate/components/uni-rate/uni-rate */ "uni_modules/uni-rate/components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-rate/components/uni-rate/uni-rate.vue */ 261))
     },
     CenterCard: function () {
-      return __webpack_require__.e(/*! import() | components/CenterCard/CenterCard */ "components/CenterCard/CenterCard").then(__webpack_require__.bind(null, /*! @/components/CenterCard/CenterCard.vue */ 255))
+      return __webpack_require__.e(/*! import() | components/CenterCard/CenterCard */ "components/CenterCard/CenterCard").then(__webpack_require__.bind(null, /*! @/components/CenterCard/CenterCard.vue */ 268))
     },
     uniDataSelect: function () {
-      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 262))
+      return Promise.all(/*! import() | uni_modules/uni-data-select/components/uni-data-select/uni-data-select */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-data-select/components/uni-data-select/uni-data-select")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-data-select/components/uni-data-select/uni-data-select.vue */ 275))
+    },
+    uniLoadMore: function () {
+      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 294))
     },
   }
 } catch (e) {
@@ -178,6 +184,16 @@ var render = function () {
   })
   var g0 = _vm.movie.hotMovieList.slice(0, 5)
   var g1 = _vm.movie.weeklyBestMovieList.slice(0, 5)
+  var g2 = _vm.movie.movieCategoryList.slice(0, 5)
+  if (!_vm._isMounted) {
+    _vm.e0 = function ($event, item) {
+      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
+        _temp2 = _temp.eventParams || _temp["event-params"],
+        item = _temp2.item
+      var _temp, _temp2
+      return _vm.__set_model(item.rating, "star_count", $event, [])
+    }
+  }
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -187,6 +203,7 @@ var render = function () {
         l3: l3,
         g0: g0,
         g1: g1,
+        g2: g2,
       },
     }
   )
@@ -340,6 +357,21 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   data: function data() {
     return {
@@ -350,36 +382,38 @@ var _default = {
       },
       movie: {
         page: 1,
-        selectTypeValue: 0,
+        selectTypeValue: 'action',
         currentSwiperItem: 0,
         bgImage: '',
         type: [{
-          value: 0,
+          value: 'action',
           text: "动作"
         }, {
-          value: 1,
+          value: 'comedy',
           text: "喜剧"
         }, {
-          value: 2,
+          value: 'scifi',
           text: "科幻"
         }, {
-          value: 2,
+          value: 'love',
           text: "爱情"
         }],
         top250MovieList: [],
         todayShowingMovieList: [],
         hotMovieList: [],
-        weeklyBestMovieList: []
+        weeklyBestMovieList: [],
+        movieCategoryList: [],
+        yearsMovieList: []
       },
       scrollTop: 0,
-      old: {
-        scrollTop: 0
-      },
       date: {
         today: (0, _moment.default)().format('YYYYMMDD'),
         weeks: (0, _moment.default)().subtract(7, 'days').format('YYYYMMDD'),
         month: (0, _moment.default)().subtract(1, 'month').format('YYYYMMDD')
-      }
+      },
+      startYear: 1921,
+      endYear: 2022,
+      pickerData: []
     };
   },
   methods: {
@@ -387,6 +421,9 @@ var _default = {
     currentChange: function currentChange(event) {
       this.movie.currentSwiperItem = event.detail.current;
       this.movie.bgImage = this.movie.todayShowingMovieList[this.movie.currentSwiperItem].cover.url;
+    },
+    selectCategoryChange: function selectCategoryChange(event) {
+      this.getCategoryMovie(event);
     },
     handleDate: function handleDate(type) {
       for (var i in this.dateHandler) {
@@ -407,20 +444,32 @@ var _default = {
           break;
       }
     },
+    showPicker: function showPicker() {
+      var _this = this;
+      // 生成年份数组
+      var years = Array.from({
+        length: this.endYear - this.startYear + 1
+      }, function (_, i) {
+        return _this.startYear + i;
+      });
+      // 将年份数组转换为 picker 数据格式
+      this.pickerData = [years.map(function (year) {
+        return {
+          label: year.toString(),
+          value: year
+        };
+      })];
+    },
     getToday: function getToday() {
       var td = (0, _moment.default)();
       this.date.today = td.format('YYYYMMDD');
     },
-    scroll: function scroll(e) {
-      // console.log(e)
-      this.old.scrollTop = e.detail.scrollTop;
-    },
     getTopMovie: function getTopMovie() {
-      var _this = this;
+      var _this2 = this;
       uni.request({
         url: "https://rank.8610000.xyz/top250/".concat(this.movie.page, ".json"),
         success: function success(res) {
-          _this.movie.top250MovieList = res.data.subject_collection_items;
+          _this2.movie.top250MovieList = res.data.subject_collection_items;
         },
         fail: function fail(err) {
           console.log(err);
@@ -428,12 +477,12 @@ var _default = {
       });
     },
     getTodayShowing: function getTodayShowing() {
-      var _this2 = this;
+      var _this3 = this;
       uni.request({
         url: "https://rank.8610000.xyz/hot/".concat(this.date.today, "/movie_showing.json"),
         success: function success(res) {
-          _this2.movie.todayShowingMovieList = res.data;
-          _this2.movie.bgImage = res.data[0].cover.url;
+          _this3.movie.todayShowingMovieList = res.data;
+          _this3.movie.bgImage = res.data[0].cover.url;
         },
         fail: function fail(err) {
           console.log(err);
@@ -441,11 +490,11 @@ var _default = {
       });
     },
     getHotMovie: function getHotMovie(date) {
-      var _this3 = this;
+      var _this4 = this;
       uni.request({
         url: "https://rank.8610000.xyz/hot/".concat(date, "/movie_hot_gaia.json"),
         success: function success(res) {
-          _this3.movie.hotMovieList = res.data;
+          _this4.movie.hotMovieList = res.data;
         },
         fail: function fail(err) {
           console.log(err);
@@ -453,11 +502,11 @@ var _default = {
       });
     },
     getWeeklyBestMovie: function getWeeklyBestMovie() {
-      var _this4 = this;
+      var _this5 = this;
       uni.request({
         url: 'https://rank.8610000.xyz/weekly_best/movie/1.json',
         success: function success(res) {
-          _this4.movie.weeklyBestMovieList = res.data.subject_collection_items;
+          _this5.movie.weeklyBestMovieList = res.data.subject_collection_items;
         },
         fail: function fail(err) {
           console.log(err);
@@ -465,10 +514,23 @@ var _default = {
       });
     },
     getCategoryMovie: function getCategoryMovie(type) {
+      var _this6 = this;
       uni.request({
         url: "https://rank.8610000.xyz/category/".concat(type, "/1.json"),
         success: function success(res) {
-          console.log(res.data);
+          _this6.movie.movieCategoryList = res.data.subject_collection_items;
+        },
+        fail: function fail(err) {
+          console.log(err);
+        }
+      });
+    },
+    getDiffYearsMovie: function getDiffYearsMovie() {
+      var _this7 = this;
+      uni.request({
+        url: 'https://moviedb.8610000.xyz/q.json',
+        success: function success(res) {
+          _this7.yearsMovieList = res.data.filter(function (item) {});
         },
         fail: function fail(err) {
           console.log(err);
@@ -481,6 +543,21 @@ var _default = {
     this.getTodayShowing();
     this.getHotMovie(this.date.today);
     this.getWeeklyBestMovie();
+    this.getCategoryMovie(this.movie.selectTypeValue);
+  },
+  //监听滚动事件
+  onPageScroll: function onPageScroll(e) {
+    this.scrollTop = e.scrollTop;
+  },
+  //启动下拉刷新
+  onPullDownRefresh: function onPullDownRefresh() {
+    console.log('refresh');
+    setTimeout(function () {
+      uni.stopPullDownRefresh();
+    }, 1000);
+  },
+  onReachBottom: function onReachBottom() {
+    console.log("上拉加载更多");
   }
 };
 exports.default = _default;

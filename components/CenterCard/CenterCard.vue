@@ -82,7 +82,7 @@
 					text-shadow: 1px 1px 2px #666;
 
 					.card_info_title {
-						margin: 5rpx 10rpx 5rpx 10rpx;
+						margin: 5rpx 15rpx;
 						font-weight: 600;
 						text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 						overflow: hidden;
@@ -91,7 +91,7 @@
 					}
 
 					.card_info_rank {
-						margin-left: 7rpx;
+						margin-left: 12rpx;
 
 						uni-rate {
 							display: inline-block;
@@ -118,7 +118,7 @@
 							-webkit-box-orient: vertical;
 							-webkit-line-clamp: 2;
 							white-space: normal;
-							padding: 0 10rpx;
+							padding: 0 15rpx;
 						}
 					}
 

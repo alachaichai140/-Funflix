@@ -1,6 +1,7 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/my/my"
   ],
   "subPackages": [],
   "window": {
@@ -9,5 +10,26 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#2c2c2c",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tabbar/home-active.png",
+        "selectedIconPath": "static/tabbar/home.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "static/tabbar/my-active.png",
+        "selectedIconPath": "static/tabbar/my.png"
+      }
+    ]
+  },
+  "lazyCodeLoading": "requiredComponents",
   "usingComponents": {}
 }
